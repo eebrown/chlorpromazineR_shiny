@@ -11,8 +11,10 @@ ui <- fluidPage(
   br(),
 
   "This calculator can be used to calculate antipsychotic dose equivalents.",
-
-  "Please see the ",
+  "For bulk calculation or research use, the R package ",
+  tags$a(href = "https://cran.r-project.org/package=chlorpromazineR",
+         "chlorpromazineR"),
+  " is more appropriate. Please see the ",
   tags$a(href = "https://docs.ropensci.org/chlorpromazineR/articles/walkthrough.html",
          "documentation"),
   "for data sources and references, limitations and other important details.",
@@ -88,7 +90,7 @@ server <- function(input, output) {
 
 
     as.character(paste(input$in_dose, "mg of", input$in_from,
-                       "is equivalent to", result$ap_eq, " mg of", input$in_to))
+                       "is equivalent to", round(result$ap_eq, 1), " mg of", input$in_to))
 
     })
 
